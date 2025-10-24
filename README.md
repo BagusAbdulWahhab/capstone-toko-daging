@@ -1,61 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplikasi Manajemen Stok Toko Daging
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Konsep Aplikasi Manajemen Stok Toko Daging (Laravel)
+## Ringkasan Umum
+Aplikasi ini adalah sistem informasi berbasis web yang dirancang khusus untuk memudahkan pemilik atau pengelola toko daging di pasar dalam mengelola inventaris (stok) barang secara digital. Tujuannya adalah untuk menggantikan pencatatan manual, meningkatkan akurasi data, mempercepat proses transaksi, dan menyediakan laporan yang berguna untuk pengambilan keputusan.
+Aplikasi ini akan dibangun sebagai aplikasi full-stack menggunakan framework Laravel, yang akan menangani semua logika bisnis di sisi backend dan juga dapat menyajikan tampilan antarmuka (frontend) yang responsif dan mudah digunakan.
 
-## About Laravel
+## Alur Kerja Aplikasi (Application Workflow)
+Berikut adalah alur kerja umum pengguna dari awal hingga akhir dalam menggunakan aplikasi ini sehari-hari:
+1.	Login Pengguna:
+	Setiap pengguna (pemilik atau kasir) masuk ke dalam sistem menggunakan akun mereka. Akan ada level akses yang berbeda (misalnya: Admin/Pemilik bisa melihat semua data, sedangkan Kasir hanya bisa melakukan penjualan).
+2.	Kelola Data Master (Setup Awal):
+	Sebelum memulai, pengguna (Admin) perlu memasukkan data-data dasar seperti:
+	Data Produk: Menambahkan jenis-jenis daging yang dijual (mis., Daging Sapi Sirloin, Daging Ayam Paha, Tulang Iga), beserta satuan (Kg, Gram, Pcs), harga beli, dan harga jual.
+	Data Supplier: Menambahkan informasi pemasok daging.
+3.	Pencatatan Stok Masuk (Pembelian):
+	Ketika daging baru datang dari supplier, staf akan masuk ke menu "Stok Masuk".
+	Mereka akan memilih produk, memasukkan jumlah (mis., 20 Kg), memilih supplier, dan mencatat harga beli.
+	Sistem secara otomatis akan menambahkan jumlah stok untuk produk tersebut di database.
+4.	Pencatatan Penjualan (Stok Keluar):
+	Ini adalah aktivitas harian utama. Di halaman kasir (POS - Point of Sale), staf akan:
+	Memilih produk yang dibeli pelanggan.
+	Memasukkan jumlah yang terjual (mis., 1.5 Kg).
+	Sistem akan otomatis menghitung total harga.
+	Setelah transaksi selesai, sistem akan secara otomatis mengurangi jumlah stok produk yang terjual.
+5.	Pemantauan Stok Real-time:
+	Pemilik toko dapat kapan saja membuka Dashboard untuk melihat sisa stok setiap jenis daging secara real-time tanpa harus mengecek fisik. Sistem akan menampilkan produk mana yang stoknya menipis.
+6.	Melihat Laporan:
+	Di akhir hari atau periode tertentu, pemilik dapat mengakses menu "Laporan" untuk melihat:
+	Laporan Penjualan Harian/Mingguan/Bulanan.
+	Laporan Laba/Rugi sederhana (berdasarkan selisih harga jual dan beli).
+	Laporan Stok Masuk dan Keluar.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur-Fitur Utama
+Fitur-fitur ini akan menjadi pilar utama dari aplikasi Anda:
+1. Dashboard Utama
+•	Tampilan ringkasan informasi terpenting setelah login.
+•	Menampilkan metrik kunci: jumlah total stok, produk terlaris, ringkasan penjualan hari ini, dan notifikasi stok yang hampir habis.
+2. Manajemen Produk
+•	CRUD (Create, Read, Update, Delete) untuk semua produk daging.
+•	Atribut produk: Nama Produk, Kode SKU (opsional), Satuan (Kg, Pcs), Harga Beli, Harga Jual.
+3. Manajemen Supplier
+•	CRUD untuk data supplier.
+•	Atribut: Nama Supplier, Kontak (No. Telepon), Alamat.
+4. Manajemen Stok
+•	Stok Masuk (Pembelian): Modul untuk mencatat penerimaan barang dari supplier.
+•	Stok Keluar (Penjualan): Terintegrasi dengan sistem kasir.
+•	Penyesuaian Stok (Stock Opname): Fitur untuk menyesuaikan jumlah stok jika ada perbedaan antara data sistem dan stok fisik (misalnya karena rusak, hilang, atau penyusutan).
+5. Sistem Kasir (Point of Sale - POS)
+•	Antarmuka yang sederhana dan cepat untuk mencatat transaksi penjualan.
+•	Pencarian produk yang mudah.
+•	Perhitungan total harga otomatis.
+•	Pencatatan riwayat transaksi.
+6. Laporan & Analitik
+•	Laporan Penjualan: Dapat difilter berdasarkan rentang tanggal.
+•	Laporan Stok: Menampilkan riwayat pergerakan stok untuk setiap produk.
+•	Laporan Profitabilitas: Menghitung keuntungan kotor per produk atau per periode.
+7. Manajemen Pengguna
+•	Sistem hak akses (Roles & Permissions).
+•	Admin/Pemilik: Akses penuh ke semua fitur.
+•	Kasir/Staf: Akses terbatas hanya pada modul penjualan dan pencatatan stok masuk.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Teknologi
+•	Backend: Laravel
+•	Frontend: Laravel Blade
+•	Database: MySQL

@@ -1,6 +1,12 @@
 # Aplikasi Manajemen Stok Toko Daging
 
 ## Konsep Aplikasi Manajemen Stok Toko Daging (Laravel)
+- Ahmad Firdiansyah - 059
+- Agung Satya Irawan - 007
+- Bagus Abdul Wahhab - 073
+- Mita Mimul Qorimah - 024
+- Rizky Andini - 010
+- Wahyu Ardianto - 321
 ## Ringkasan Umum
 Aplikasi ini adalah sistem informasi berbasis web yang dirancang khusus untuk memudahkan pemilik atau pengelola toko daging di pasar dalam mengelola inventaris (stok) barang secara digital. Tujuannya adalah untuk menggantikan pencatatan manual, meningkatkan akurasi data, mempercepat proses transaksi, dan menyediakan laporan yang berguna untuk pengambilan keputusan.
 Aplikasi ini akan dibangun sebagai aplikasi full-stack menggunakan framework Laravel, yang akan menangani semua logika bisnis di sisi backend dan juga dapat menyajikan tampilan antarmuka (frontend) yang responsif dan mudah digunakan.
